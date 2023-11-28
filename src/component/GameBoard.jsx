@@ -10,19 +10,6 @@ const GameBoard = ({onSelectSquare, turns}) => {
 		const { row, column } = square;
 		gameBoard[row][column] = player;
 	}
-	// const [gameBoard, setGameBoard] = useState(initialGameBoard);
-	// const handleSelectSquare = (rowIndex, columnIndex) => {
-	// 	console.log(rowIndex + " row")
-	// 	console.log(columnIndex + " column")
-	// 	setGameBoard((prevGameBoard) => {
-	// 		console.log(prevGameBoard);
-	// 		const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-	// 		updatedBoard[rowIndex][columnIndex] = activePlayerSymbol;
-	// 		console.log(updatedBoard);
-	// 		return updatedBoard;
-	// 	});
-	// 	onSelectSquare();
-	// }
 
 	return (
 		<ol id={'game-board'}>

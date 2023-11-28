@@ -29,7 +29,6 @@ const Player = ({initialName, symbol, isActive}) => {
 
 	let buttonCaption = 'Edit';
 	let inputPlayerInfo = <input ref={playerNameInput} type={'text'} onKeyDown={playerNameHandler} value={playerName ?? 'Player 1'} required></input>
-	//let inputPlayerInfo = <input ref={playerNameInput} type={'text'} onKeyDown={playerNameHandler} defaultValue={playerName ?? 'Player 1'} required></input>
 	let readOnlyPlayerInfo = <span className={'player-name'}>{playerName}</span>
 
 

@@ -19,7 +19,6 @@ function App() {
 	const activePlayer = derivedActivePlayer(gameTurns);
 
 	const handleSelectSquare = (rowIndex, columnIndex) => {
-		//setActivePlayer((currentActivePlayer) => currentActivePlayer === 'X' ? 'O' : 'X');
 		setGameTurns(prevTurns => {
 			let currentPlayer = derivedActivePlayer(gameTurns);
 			const updatedTurns = [
