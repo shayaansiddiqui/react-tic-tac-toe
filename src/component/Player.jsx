@@ -1,24 +1,35 @@
-import {useState} from 'react';
-const Player = ({name, symbol}) => {
+import React, {useState} from 'react';
+
+const Player = ({initialName, symbol}) => {
 	const [isEditing, setIsEditing] = useState(false);
-	const [playerName, setPlayerName] = useState(name);
+	const [playerName, setPlayerName] = useState(initialName);
+	let playerNameInput = React.createRef();
 	const editHandler = () => {
 		buttonCaption = 'Save';
+		updatePlayerName(playerNameInput.current?.value);
 		setIsEditing(editing => !editing);
 	}
 
 	const playerNameHandler = (e) => {
-		if(e.key === 'Enter')
-		{
-			console.log(e.target.value);
-			if(e.target.value.length > 0) {
-				setPlayerName(e.target.value);
-				setIsEditing(!isEditing);
-			}
+		if (e.key === 'Enter') {
+			let name = e.target.value;
+			updatePlayerName(name);
+			setIsEditing(editing => !editing);
 		}
 	}
+
+	const updatePlayerName = (desiredName) => {
+		if(desiredName === undefined)
+			desiredName = 'Player One';
+		if(desiredName.length === 0) {
+			desiredName = 'Player One';
+		}
+		setPlayerName(desiredName);
+	}
+
 	let buttonCaption = 'Edit';
-	let inputPlayerInfo = <input type={'text'} onKeyDown={playerNameHandler} defaultValue={playerName ?? 'Player 1'} required></input>
+	let inputPlayerInfo = <input ref={playerNameInput} type={'text'} onKeyDown={playerNameHandler} value={playerName ?? 'Player 1'} required></input>
+	//let inputPlayerInfo = <input ref={playerNameInput} type={'text'} onKeyDown={playerNameHandler} defaultValue={playerName ?? 'Player 1'} required></input>
 	let readOnlyPlayerInfo = <span className={'player-name'}>{playerName}</span>
 
 
