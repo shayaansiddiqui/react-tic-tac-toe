@@ -5,7 +5,7 @@ const initialGameBoard = [
 	[null, null, null],
 	[null, null, null]
 ]
-const GameBoard = () => {
+const GameBoard = ({onSelectSquare, activePlayerSymbol}) => {
 	const [gameBoard, setGameBoard] = useState(initialGameBoard);
 	const handleSelectSquare = (rowIndex, columnIndex) => {
 		console.log(rowIndex + " row")
@@ -13,10 +13,12 @@ const GameBoard = () => {
 		setGameBoard((prevGameBoard) => {
 			console.log(prevGameBoard);
 			const updatedBoard = [...prevGameBoard.map(innerArray => [...innerArray])];
-			updatedBoard[rowIndex][columnIndex] = 'X';
+			updatedBoard[rowIndex][columnIndex] = activePlayerSymbol;
 			console.log(updatedBoard);
 			return updatedBoard;
 		});
+
+		onSelectSquare();
 	}
 	return (
 		<ol id={'game-board'}>
