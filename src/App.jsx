@@ -14,7 +14,6 @@ const derivedActivePlayer = (gameTurns) => {
 }
 
 function App() {
-	//const [activePlayer, setActivePlayer] = useState('X');
 	const [gameTurns, setGameTurns] = useState([]);
 
 	const activePlayer = derivedActivePlayer(gameTurns);
@@ -22,11 +21,9 @@ function App() {
 	const handleSelectSquare = (rowIndex, columnIndex) => {
 		setGameTurns(prevTurns => {
 			let currentPlayer = derivedActivePlayer(gameTurns);
-			const updatedTurns = [
+			return [
 				{square: {row: rowIndex, column: columnIndex}, player: currentPlayer},
 				...prevTurns];
-
-			return updatedTurns;
 		});
 	}
 
