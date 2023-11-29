@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-const Player = ({initialName, symbol, isActive}) => {
+const Player = ({initialName, symbol, isActive, onChangeName}) => {
 	const [isEditing, setIsEditing] = useState(false);
 	const [playerName, setPlayerName] = useState(initialName);
 	let playerNameInput = React.createRef();
@@ -8,6 +8,10 @@ const Player = ({initialName, symbol, isActive}) => {
 		buttonCaption = 'Save';
 		updatePlayerName(playerNameInput.current?.value);
 		setIsEditing(editing => !editing);
+
+		if(isEditing) {
+			onChangeName(symbol, playerName);
+		}
 	}
 
 	const playerNameHandler = (e) => {
